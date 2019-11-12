@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from './self/react-redux'
+import { plusCounter, subCounter, asyncPlusCounter, plusMultiple } from './counter'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+class App extends React.Component {
+  render() {
+    const { counter, plusCounter, subCounter, asyncPlusCounter, plusMultiple } = this.props
+    return (
+      <div>
+        <p>counter: { counter }</p>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <button onClick={ plusCounter }>增加</button>
+          <button onClick={ subCounter }>减少</button>
+          <button onClick={ asyncPlusCounter }>异步增加</button>
+          <button onClick={ plusMultiple }>数组式增加</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      </div>
+    )
+  }
 }
+
+App = connect(
+  state => ({ counter: state }),
+  { plusCounter, subCounter, asyncPlusCounter, plusMultiple }
+)(App)
 
 export default App;
