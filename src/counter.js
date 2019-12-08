@@ -43,7 +43,7 @@ export function asyncPlusCounter() {
 // }
 // store.subscribe(listener)
 
-// store.dispatch({ type: 'plus' })
-// store.dispatch({ type: 'plus' })
-// store.dispatch({ type: 'subtract' })
-// store.dispatch({ type: 'plus' })
+// store.dispatch(plusCounter())
+// store.dispatch(plusCounter())
+// store.dispatch(subCounter())
+// store.dispatch(plusCounter())
